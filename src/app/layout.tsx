@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Lato, Great_Vibes } from 'next/font/google';
 import SmoothScroll from '@/components/effects/SmoothScroll';
-import CursorGlow from '@/components/effects/CursorGlow';
 import HeaderFooterWrapper from '@/components/layout/HeaderFooterWrapper';
 import './globals.css';
+import Script from 'next/script';
 
 // ─── Font Configuration ───
 const cormorantGaramond = Cormorant_Garamond({
@@ -59,22 +59,17 @@ export default function RootLayout({
         {/* Snipcart Integration Preconnect & Stylesheet */}
         <link rel="preconnect" href="https://app.snipcart.com" />
         <link rel="preconnect" href="https://cdn.snipcart.com" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css"
-        />
       </head>
       <body>
         <SmoothScroll>
-          <CursorGlow />
           <HeaderFooterWrapper>{children}</HeaderFooterWrapper>
         </SmoothScroll>
 
         {/* Snipcart Script Setup (using public test API key) */}
-        <script
-          async
+        <Script
           src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"
-        ></script>
+          strategy="lazyOnload"
+        />
         <div
           id="snipcart"
           data-api-key="Y2UzNjBkZjQtYzg3ZC00NWYwLWFiN2YtNDI4NWM1NzdhNmU5NjM3NzgxOTY3OTYyMTU0MTEw"

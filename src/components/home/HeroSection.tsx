@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import ParticleField from '@/components/effects/ParticleField';
 import Button from '@/components/ui/Button';
 import styles from './HeroSection.module.css';
+import dynamic from 'next/dynamic';
+
+const ParticleField = dynamic(() => import('@/components/effects/ParticleField'), { ssr: false });
 
 export default function HeroSection() {
   return (
