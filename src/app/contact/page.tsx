@@ -18,14 +18,35 @@ export default function Contact() {
   const [formMsg, setFormMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formName.trim() && formEmail.trim() && formMsg.trim()) {
-      setSubmitted(true);
-      // Reset form
-      setFormName('');
-      setFormEmail('');
-      setFormMsg('');
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/muddassir.commits@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: formName,
+            email: formEmail,
+            subject: `Nyyraa Beauty Contact - ${formSubject.toUpperCase()}`,
+            message: formMsg
+          })
+        });
+        if (res.ok) {
+          setSubmitted(true);
+          setFormName('');
+          setFormEmail('');
+          setFormMsg('');
+        } else {
+          alert("Something went wrong. Please try again or email us directly at info@nyyraa.com.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Network error. Please try again or email us directly at info@nyyraa.com.");
+      }
     }
   };
 
