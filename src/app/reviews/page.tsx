@@ -24,6 +24,7 @@ export default function Reviews() {
   const [formRating, setFormRating] = useState(5);
   const [formProduct, setFormProduct] = useState(products[0].slug);
   const [formText, setFormText] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 1. Stats calculation
   const stats = useMemo(() => {
@@ -53,28 +54,53 @@ export default function Reviews() {
   }, [reviewsList, filterRating]);
 
   // 3. Handle Form Submit
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formName.trim() || !formText.trim()) return;
 
-    const newReview = {
-      id: `rev-custom-${Date.now()}`,
-      customerName: formName,
-      rating: formRating,
-      text: formText,
-      date: new Date().toISOString().split('T')[0],
-      productSlug: formProduct,
-      verified: true, // Mocked as verified
-      helpful: 0,
-    };
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/review', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formName,
+          rating: formRating,
+          product: formProduct,
+          text: formText,
+        }),
+      });
 
-    setReviewsList((prev) => [newReview, ...prev]);
-    setIsModalOpen(false);
+      if (response.ok) {
+        const newReview = {
+          id: `rev-custom-${Date.now()}`,
+          customerName: formName,
+          rating: formRating,
+          text: formText,
+          date: new Date().toISOString().split('T')[0],
+          productSlug: formProduct,
+          verified: true, // Mocked as verified
+          helpful: 0,
+        };
 
-    // Reset fields
-    setFormName('');
-    setFormRating(5);
-    setFormText('');
+        setReviewsList((prev) => [newReview, ...prev]);
+        setIsModalOpen(false);
+
+        // Reset fields
+        setFormName('');
+        setFormRating(5);
+        setFormText('');
+      } else {
+        alert('Failed to submit review. Please try again.');
+      }
+    } catch (err) {
+      console.error('Error submitting review:', err);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const getProductTitle = (slug: string) => {
@@ -255,8 +281,8 @@ export default function Reviews() {
                   />
                 </div>
 
-                <Button type="submit" variant="primary" fullWidth style={{ marginTop: '1rem' }}>
-                  Submit Review
+                <Button type="submit" variant="primary" fullWidth style={{ marginTop: '1rem' }} disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit Review'}
                 </Button>
               </form>
             </motion.div>

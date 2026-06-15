@@ -17,35 +17,42 @@ export default function Contact() {
   const [formSubject, setFormSubject] = useState('general');
   const [formMsg, setFormMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
     if (formName.trim() && formEmail.trim() && formMsg.trim()) {
+      setIsSubmitting(true);
       try {
-        const res = await fetch("https://formsubmit.co/ajax/info@nyyraa.com,muhammadshadabhasan@gmail.com", {
-          method: "POST",
+        const response = await fetch('/api/contact', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             name: formName,
             email: formEmail,
-            subject: `Nyyraa Beauty Contact - ${formSubject.toUpperCase()}`,
-            message: formMsg
-          })
+            subject: formSubject,
+            message: formMsg,
+          }),
         });
-        if (res.ok) {
+
+        if (response.ok) {
           setSubmitted(true);
           setFormName('');
           setFormEmail('');
           setFormMsg('');
         } else {
-          alert("Something went wrong. Please try again or email us directly at info@nyyraa.com.");
+          const data = await response.json();
+          setErrorMsg(data.error || 'Failed to send message. Please try again.');
         }
       } catch (err) {
-        console.error(err);
-        alert("Network error. Please try again or email us directly at info@nyyraa.com.");
+        console.error('Error submitting form:', err);
+        setErrorMsg('An error occurred. Please check your connection and try again.');
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -167,9 +174,21 @@ export default function Contact() {
                       />
                     </div>
 
-                    <Button type="submit" variant="primary" fullWidth style={{ marginTop: '1rem' }}>
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      variant="primary" 
+                      fullWidth 
+                      style={{ marginTop: '1rem' }}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
+
+                    {errorMsg && (
+                      <p style={{ color: '#4A0E2D', fontSize: '0.85rem', marginTop: '0.75rem', textAlign: 'center', fontWeight: 'bold' }}>
+                        {errorMsg}
+                      </p>
+                    )}
                   </form>
                 </div>
               )}

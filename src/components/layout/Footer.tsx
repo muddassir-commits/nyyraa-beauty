@@ -10,31 +10,28 @@ import styles from './Footer.module.css';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      setIsSubmitting(true);
       try {
-        const res = await fetch("https://formsubmit.co/ajax/info@nyyraa.com,muhammadshadabhasan@gmail.com", {
-          method: "POST",
+        const response = await fetch('/api/newsletter', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            email: email,
-            subject: "Nyyraa Beauty - Newsletter Subscription Request"
-          })
+          body: JSON.stringify({ email }),
         });
-        if (res.ok) {
+        if (response.ok) {
           setSubmitted(true);
           setEmail('');
         }
       } catch (err) {
-        console.error(err);
-        // Fallback to visual success state even on network error to keep UX seamless
-        setSubmitted(true);
-        setEmail('');
+        console.error('Newsletter submission error:', err);
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -134,10 +131,11 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={isSubmitting}
                   aria-label="Email address for newsletter"
                 />
-                <button type="submit" className={styles.submitBtn}>
-                  Subscribe
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Subscribe'}
                 </button>
               </form>
             )}
