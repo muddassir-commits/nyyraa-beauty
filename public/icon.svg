@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Rounded corner soft ivory base -->
+  <rect width="32" height="32" rx="8" fill="#FFFFF0" />
+  
+  <!-- Outer brand circle border -->
+  <circle cx="16" cy="16" r="13.5" stroke="#B76E79" stroke-width="0.75" fill="none" opacity="0.3" />
+  
+  <!-- Elegant Serif Letter "N" in Brand Deep Plum -->
+  <text 
+    x="16" 
+    y="21" 
+    font-family="'Cormorant Garamond', 'Didot', 'Times New Roman', serif" 
+    font-size="17" 
+    font-weight="400" 
+    fill="#4A0E2D" 
+    text-anchor="middle"
+    letter-spacing="0.05em"
+  >N</text>
+  
+  <!-- Botanical leaf growing from the top right of N -->
+  <path d="M19 11 C 21 8.5, 24.5 8, 25.5 10 C 24.5 12, 21.5 12.5, 19.5 11.5 Z" fill="#B76E79" />
+  <path d="M20 11.5 C 21 10, 23 10.2, 24 10.8 Z" fill="#C8A882" opacity="0.8" />
+  <path d="M18.8 11.8 L 19.8 10.8" stroke="#B76E79" stroke-width="0.5" />
+</svg>

@@ -21,6 +21,15 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .filterBar {
+    align-items: center;
+  }
+  .categoryRow {
+    justify-content: center;
+  }
+}
+
 .categoryRow {
   display: flex;
   flex-wrap: wrap;
@@ -66,6 +75,12 @@
   padding: 0.5rem 1rem;
   border-radius: 50px;
   align-self: flex-start;
+}
+
+@media (max-width: 1023px) {
+  .sortDropdown {
+    align-self: center;
+  }
 }
 
 .sortIcon {

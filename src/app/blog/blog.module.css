@@ -217,6 +217,13 @@
   box-shadow: var(--glass-shadow);
 }
 
+@media (max-width: 768px) {
+  .postCoverWrapper {
+    padding-top: 60%;
+    margin-bottom: 2.5rem;
+  }
+}
+
 .postCover {
   position: absolute;
   top: 0;
@@ -281,6 +288,13 @@
   margin-top: 6rem;
   border-top: 1px solid var(--glass-border);
   padding-top: 4rem;
+}
+
+@media (max-width: 768px) {
+  .relatedSection {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+  }
 }
 
 .relatedGrid {

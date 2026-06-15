@@ -34,6 +34,12 @@
   transition: var(--transition-smooth);
 }
 
+@media (max-width: 768px) {
+  .ingCard {
+    padding: 1.5rem;
+  }
+}
+
 .ingCard:hover {
   transform: translateY(-5px);
   border-color: rgba(183, 110, 121, 0.4);
@@ -148,6 +154,13 @@
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   margin-top: 6rem;
+}
+
+@media (max-width: 768px) {
+  .excludedSection {
+    padding: 1.5rem;
+    margin-top: 4rem;
+  }
 }
 
 .excludedGrid {

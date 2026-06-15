@@ -25,6 +25,12 @@
   box-shadow: var(--glass-shadow);
 }
 
+@media (max-width: 768px) {
+  .formCard {
+    padding: 1.5rem;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -127,6 +133,12 @@
   gap: 1.25rem;
   box-shadow: var(--glass-shadow);
   transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+  .infoCard {
+    padding: 1.25rem;
+  }
 }
 
 .infoCard:hover {

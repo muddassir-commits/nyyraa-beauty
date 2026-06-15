@@ -31,6 +31,11 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: 'Nyyraa Beauty | Korean Skincare for Indian Skin',
   description: 'Premium Korean-inspired skincare designed for Indian skin tones. Paraben-free, cruelty-free, and science-backed. Shop Collagen Masks, SPF 50 Sunscreens, and Lip Tints.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'Nyyraa Beauty | Korean Skincare for Indian Skin',
     description: 'Premium Korean-inspired skincare designed for Indian skin tones.',
