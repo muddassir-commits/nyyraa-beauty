@@ -1,0 +1,246 @@
+.page {
+  background-color: var(--color-ivory-warm);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.introImageWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  background-color: var(--color-ivory);
+}
+
+.introImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.introContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.text {
+  font-size: var(--text-body);
+  color: rgba(74, 14, 45, 0.85);
+  line-height: 1.75;
+}
+
+.quoteCard {
+  background: var(--gradient-rose);
+  color: white;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 6rem;
+  box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
+}
+
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.quoteAuthor {
+  font-size: var(--text-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-ivory);
+}
+
+.valuesSection {
+  margin-bottom: 6rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.valueCard {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(183, 110, 121, 0.4);
+  box-shadow: 0 10px 25px rgba(183, 110, 121, 0.1);
+}
+
+.valueIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--color-blush-overlay);
+  color: var(--color-rose-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.valueTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  color: var(--color-deep-plum);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.valueDesc {
+  font-size: var(--text-small);
+  color: rgba(74, 14, 45, 0.75);
+  line-height: 1.6;
+}
+
+.timelineSection {
+  margin-bottom: 3rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.5rem;
+  width: 1px;
+  background-color: var(--glass-border);
+}
+
+@media (min-width: 768px) {
+  .timeline::before {
+    left: 50%;
+  }
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .timelineItem {
+    padding-left: 0;
+    width: 50%;
+  }
+  
+  .timelineItemOdd {
+    margin-left: auto;
+    padding-left: 3rem;
+  }
+  
+  .timelineItemEven {
+    padding-right: 3rem;
+    text-align: right;
+  }
+}
+
+.timelineDot {
+  position: absolute;
+  left: 1rem;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-rose-gold);
+  border: 3px solid var(--color-ivory-warm);
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .timelineDot {
+    left: auto;
+  }
+  
+  .timelineItemOdd .timelineDot {
+    left: -0.5rem;
+  }
+  
+  .timelineItemEven .timelineDot {
+    right: -0.5rem;
+  }
+}
+
+.timelineYear {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-rose-gold-dark);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timelineTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-deep-plum);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.timelineDesc {
+  font-size: var(--text-small);
+  color: rgba(74, 14, 45, 0.75);
+  line-height: 1.5;
+}

@@ -1,0 +1,146 @@
+.wrapper {
+  margin-top: 4rem;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 2rem;
+}
+
+.tabHeaders {
+  display: flex;
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  gap: 1.5rem;
+}
+
+.tabBtn {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: rgba(74, 14, 45, 0.5);
+  padding: 0.75rem 0.5rem;
+  position: relative;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  color: var(--color-rose-gold);
+}
+
+.activeTabBtn {
+  color: var(--color-deep-plum);
+}
+
+.activeTabBtn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-rose-gold);
+}
+
+.tabContent {
+  animation: fadeIn 0.4s ease-out;
+  min-height: 200px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ingredientsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.ingredientTag {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-deep-plum);
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  font-size: var(--text-small);
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stepItem {
+  display: flex;
+  gap: 1rem;
+}
+
+.stepNum {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--color-rose-gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--text-small);
+  flex-shrink: 0;
+}
+
+.stepText {
+  font-size: var(--text-body);
+  color: rgba(74, 14, 45, 0.8);
+  line-height: 1.6;
+}
+
+.reviewsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reviewCard {
+  border-bottom: 1px solid rgba(183, 110, 121, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.reviewAuthor {
+  font-weight: 700;
+  font-size: var(--text-small);
+  color: var(--color-deep-plum);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified {
+  color: var(--color-rose-gold);
+}
+
+.reviewDate {
+  font-size: var(--text-xs);
+  color: rgba(74, 14, 45, 0.5);
+}
+
+.reviewText {
+  font-size: var(--text-body);
+  color: rgba(74, 14, 45, 0.85);
+  line-height: 1.6;
+}
+
+.noReviews {
+  text-align: center;
+  padding: 3rem 0;
+  color: rgba(74, 14, 45, 0.5);
+}

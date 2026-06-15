@@ -1,0 +1,42 @@
+.trustBar {
+  background-color: var(--color-deep-plum);
+  color: var(--color-ivory);
+  padding: 1rem 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(183, 110, 121, 0.2);
+  border-bottom: 1px solid rgba(183, 110, 121, 0.2);
+  display: flex;
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.bullet {
+  color: var(--color-rose-gold-light);
+  font-size: 1.25rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

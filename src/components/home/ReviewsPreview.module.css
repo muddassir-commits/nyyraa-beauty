@@ -1,0 +1,97 @@
+.section {
+  background-color: var(--color-cream);
+  overflow: hidden;
+}
+
+.carouselContainer {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--color-deep-plum);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.rating {
+  margin-bottom: 1rem;
+}
+
+.author {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-rose-gold-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified {
+  color: var(--color-rose-gold);
+  display: flex;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBtn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-deep-plum);
+  background-color: var(--glass-bg);
+  transition: var(--transition-fast);
+}
+
+.navBtn:hover {
+  background-color: var(--gradient-rose);
+  color: #fff;
+  border-color: var(--color-rose-gold);
+  transform: scale(1.05);
+}
+
+.indicator {
+  font-size: var(--text-small);
+  color: rgba(74, 14, 45, 0.6);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
