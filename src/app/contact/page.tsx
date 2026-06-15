@@ -22,7 +22,7 @@ export default function Contact() {
     e.preventDefault();
     if (formName.trim() && formEmail.trim() && formMsg.trim()) {
       try {
-        const res = await fetch("https://formsubmit.co/ajax/muddassir.commits@gmail.com", {
+        const res = await fetch("https://formsubmit.co/ajax/info@nyyraa.com,muhammadshadabhasan@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
